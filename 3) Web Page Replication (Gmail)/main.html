@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gmail: Private and secure email</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+      body{
+        margin: 0px;
+        min-height: 100vh;
+        font-family: "Roboto", arial, sans-serif;
+      }
+      .menu{
+        display: flex;
+        border-bottom: 1px solid rgba(189, 189, 189, 0.66);
+        box-shadow: 0px 2px 3px rgba(200, 198, 198, 0.66);
+        padding: 12px 22px;
+        position: sticky;
+        top: 0;
+      }
+      .left{
+        display: grid;
+        grid-template-columns: 30px auto;
+        place-items: center;
+        gap: 10px;
+      }
+      a{
+        text-decoration: none;
+      }
+      .title{
+        margin: 0px;
+        font-size: 22px;
+        color: rgb(95, 99, 104);
+      }
+      .right{
+        flex: 1;
+        display: flex;
+        flex-direction: row-reverse;
+        place-items: center;
+        gap: 15px;
+      }
+      button{
+        padding: 12px 26px;
+        border-radius: 4px;
+        border: none;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .work{
+        background-color: #fff;
+        color:rgb(26, 115, 232);
+        padding: 10px;
+      }
+      .work:hover, .workMain:hover{
+        background-color: rgba(241,243,244,255);
+        color: rgb(20, 80, 158);
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+      }
+      .signin{
+        background-color: #fff;
+        color:rgb(26, 115, 232);
+        border: 1px solid rgb(180, 180, 180);
+      }
+      .signin:hover{
+        border-color: rgb(26, 115, 232);
+        background-color: rgb(241,243,244,255);
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+      }
+      .create-button{
+        display: inline-flex;
+      }
+      .create, .createMain{
+        background-color: rgb(26, 115, 232);
+        border-radius: 4px 0px 0px 4px;
+        color: white;
+      }
+      .create{
+        padding: 12px 16px 12px 26px;
+      }
+      .main{
+        display: flex;
+        align-items: center;
+        justify-content:  center;
+        gap: 75px;
+        margin-top: 20px;
+      }
+      .secure{
+        font-size: 57px;
+        font-weight: bold;
+        margin: 0px;
+        color: rgb(32, 33, 36);
+      }
+      .get{
+        font-size: 19px;
+        color: rgb(95, 99, 104);
+      }
+      .createButton{
+        display: inline-flex;
+        margin-right: 20px
+      }
+      .createMain{
+        font-size: 18px;
+        padding: 12px 16px 12px 26px;
+      }
+      .downArrow{
+        margin-top: 30%;
+        border-width: 4px;
+        border-color: transparent white white transparent;
+        border-style: solid;
+        transform: rotate(45deg);
+      }
+      .dropdown{
+        border: 1px solid rgb(26, 115, 232);
+        border-left-color: rgb(100, 100, 101);
+        border-radius: 0px 4px 4px 0px;
+        background-color: rgb(26, 115, 232);
+        display: inline-block;
+        padding: 11px;
+        margin: 0px;
+      }
+      .arrow{
+        margin-top: 50%;
+        border-width: 4px;
+        border-color: transparent white white transparent;
+        border-style: solid;
+        transform: rotate(45deg);
+      }
+      .workMain{
+        background-color: #fff;
+        color:rgb(26, 115, 232);
+        font-size: 18px;
+      }
+      .gemini{
+        display: flex;
+        justify-content: center;
+	padding: 20px;
+	margin-top: 50px;
+        font-size: 42px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="menu">
+      <div class="left">
+        <a href="main.html"><img src="images/logo-gmail.png" alt="mail-logo" height="30px" width="30px"></a>
+        <a href="main.html"><p class="title">Gmail</p></a>
+      </div>
+
+      <div class="right">
+        <div class="create-button">
+          <button class="create">Create an account</button>
+          <div class="dropdown">
+            <div class="downArrow"></div>
+          </div>
+        </div>
+
+        <a href="gmail.html"><button class="signin">Sign in</button></a>
+        <button class="work">For work</button>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="leftMain">
+        <p class="secure">Secure, smart, and <br> easy to use email</p>
+        <p class="get">Get more done with Gmail. Now integrated with Google Chat, <br> Google Meet, and more, all in one place.</p>
+
+        <div class="createButton">
+          <button class="createMain">Create an account</button>
+          <div class="dropdown">
+            <div class="arrow"></div>
+          </div>
+        </div>
+
+        <button class="workMain">For work</button>
+      </div>
+
+      <div class="rightMain">
+        <img src="images/template.webp" alt="template" width="570">
+      </div>
+    </div>
+    <div class="gemini">
+      Gemini in Gmail
+    </div>
+  </body>
+</html>

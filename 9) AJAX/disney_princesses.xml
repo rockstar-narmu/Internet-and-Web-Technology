@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<disney>
+  <princess>
+    <name>Cinderella</name>
+    <kingdom>France</kingdom>
+    <friend>Jaq and Gus</friend>
+    <movie>Cinderella</movie>
+  </princess>
+  <princess>
+    <name>Ariel</name>
+    <kingdom>Atlantica</kingdom>
+    <friend>Flounder</friend>
+    <movie>The Little Mermaid</movie>
+  </princess>
+  <princess>
+    <name>Rapunzel</name>
+    <kingdom>Corona</kingdom>
+    <friend>Pascal</friend>
+    <movie>Tangled</movie>
+  </princess>
+  <princess>
+    <name>Belle</name>
+    <kingdom>France</kingdom>
+    <friend>Philippe</friend>
+    <movie>Beauty and the Beast</movie>
+  </princess>
+  <princess>
+    <name>Moana</name>
+    <kingdom>Motunui</kingdom>
+    <friend>Pua</friend>
+    <movie>Moana</movie>
+  </princess>
+  <princess>
+    <name>Elsa</name>
+    <kingdom>Arendelle</kingdom>
+    <friend>Olaf</friend>
+    <movie>Frozen</movie>
+  </princess>
+</disney>

@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <title> Gmail </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+      body{
+	background-color: #f0f4f9;
+	height: 100vh;
+	margin: 0px;
+	font-family: "Roboto", arial, sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	letter-spacing: 0.5px;
+      }
+      .container{
+	background-color: white;
+	display: grid;
+	grid-template-rows: 40px 1fr 0.2fr;
+	padding: 36px;
+      border-radius: 28px;
+      }
+      .middle{
+	display: grid;
+	grid-template-columns: 1.15fr 1fr;
+	margin-top: 30px;
+      }
+      .bottom{ 
+	justify-self: end;
+      }
+      .lang{
+	display: grid;
+	grid-template-columns: 1fr auto;
+	font-size: 12px;
+	color: rgb(31,31,31);
+	width: 73%;
+	margin-top: 20px;
+      }
+      .footer{
+	display: grid;
+	grid-template-columns: auto auto auto;
+	column-gap: 30px;
+	font-size: 12px;
+	color: rgb(31,31,31);
+      }
+      .sign{
+	font-size: 35px;
+	margin: 0px;
+      }
+      input{
+        border-radius: 4px;
+        width: 100%;
+        height: 55px;
+        padding: 15px 18px;
+        font-size: 16px;
+        cursor: text;
+        border: 1px solid rgb(31,31,31);
+        color: rgb(31,31,31)
+      }
+      button{
+	font-size: 14px;
+      }
+      .forgot, .learn, .create, .gues, .next{
+	color: rgb(11, 87, 208);
+      }
+      .guest{
+	margin: 50px 0px 0px 0px;
+	font-size: 14px;
+	color: rgb(25,25,25);
+      }
+      .gues{
+	margin: 0px 0px 30px 0px;
+	font-size: 14px;
+      }
+      .forgot{
+	font-size: 14px;
+	font-weight: 500;
+      }
+      .create{
+	border-style: none;
+        background-color: white;
+        margin-right: 30px;
+	font-weight: 500;
+      }
+      .next{
+        height: 40px;
+        width: 80px;
+        background-color: rgb(11, 87, 208);
+        border-radius: 30px;
+        color: white;
+        border: 0px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="images/google-icon.svg" height="40" width="40">
+
+      <div class="middle">
+        <div class="left">
+	  <p class="sign"> Sign in </p>
+          <p class="continue"> to continue to Gmail </p>
+        </div>
+      
+        <div class="right">
+	  <input type="text" name="email" id="email" placeholder="Email or phone">
+	  <p class="forgot"> Forgot email? </p>
+      	  <p class="guest"> Not your computer? Use Guest mode to sign in privately. <span class="learn"> Learn more about </span> </p>
+          <p class="gues"> using Guest mode </p>
+        </div>
+      </div>
+
+      <div class="bottom">
+	<button type="button" class="create"> Create account </button>
+	<button type="button" class="next"> Next </button>
+      </div>
+    </div>
+    <div class="lang">
+      <p> English (United States) </p>
+
+      <div class="footer">
+      <p> Help </p>
+      <p> Privacy </p>
+      <p> Terms </p>
+    </div>
+    </div>
+  </body>
+</html>

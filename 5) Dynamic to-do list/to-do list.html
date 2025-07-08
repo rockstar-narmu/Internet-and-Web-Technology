@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background-color: #ffe6cc;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 15px;
+            background: #ff944d;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        input {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .add-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .task-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+        }
+        .edit {
+            background-color: #ffcc00;
+        }
+        .delete {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .edit-box {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .edit-box input {
+            width: 70%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .save {
+            background-color: #66cc66;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1><i>To-Do List</i></h1>
+    <div class="container">
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <button class="add-btn" onclick="addTask()">Add</button>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            let taskInput = document.getElementById("taskInput");
+            let taskText = taskInput.value.trim();
+            if (taskText === "") {
+                alert("Enter a task!");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.innerHTML = `
+                <div class="task-row">
+                    <span>${taskText}</span> 
+                    <div>
+                        <button class="edit" onclick="editTask(this)">Edit</button> 
+                        <button class="delete" onclick="deleteTask(this)">Delete</button>
+                    </div>
+                </div>
+                <div class="edit-box" style="display:none;">
+                    <input type="text" class="edit-input" value="${taskText}">
+                    <button class="save" onclick="saveTask(this)">Save</button>
+                </div>
+            `;
+
+            document.getElementById("taskList").appendChild(li);
+            taskInput.value = "";
+        }
+
+        function editTask(button) {
+            let li = button.closest("li");
+            let editBox = li.querySelector(".edit-box");
+            editBox.style.display = "flex";
+        }
+
+        function saveTask(button) {
+            let li = button.closest("li");
+            let editInput = li.querySelector(".edit-input");
+            let newText = editInput.value.trim();
+
+            if (newText !== "") {
+                li.querySelector(".task-row span").innerText = newText;
+            }
+
+            li.querySelector(".edit-box").style.display = "none";
+        }
+
+        function deleteTask(button) {
+            button.closest("li").remove();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table, th, td {
+      border: 1px solid pink;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<button type="button" onclick="loadDoc()">Get Disney Princesses</button>
+<br><br>
+<table id="demo"></table>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xhttp.open("GET", "disney_princesses.xml", true);
+  xhttp.send();
+}
+
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table = "<tr><th>Name</th><th>Kingdom</th><th>Animal Friend</th><th>Movie</th></tr>";
+  var x = xmlDoc.getElementsByTagName("princess");
+
+  for (i = 0; i < x.length; i++) {
+    table += "<tr><td>" +
+      x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue + "</td><td>" +
+      x[i].getElementsByTagName("kingdom")[0].childNodes[0].nodeValue + "</td><td>" +
+      x[i].getElementsByTagName("friend")[0].childNodes[0].nodeValue + "</td><td>" +
+      x[i].getElementsByTagName("movie")[0].childNodes[0].nodeValue + "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+
+</body>
+</html>

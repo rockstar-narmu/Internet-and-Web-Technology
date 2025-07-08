@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Form Validation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        background: #fff;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1, h2 {
+        text-align: center;
+        color: #333;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+      }
+      input[type="text"], input[type="password"], input[type="date"], input[type="time"] {
+        width: 95%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      input[type="radio"], input[type="checkbox"] {
+        margin-right: 5px;
+        margin-top: 15px;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+      }
+      button {
+        background: #007bff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        cursor: pointer;
+        margin-top: 15px;
+        font-size: 16px;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        background: #e9ecef;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>JavaScript Form Validation</h1>
+      <form id="myForm">
+        <label>Name:</label>
+        <input type="text" id="name" />
+        <div id="errorName" class="error"></div>
+
+        <label>Register No.:</label>
+        <input type="text" id="regno" />
+        <div id="errorRegNo" class="error"></div>
+
+        <label>Password:</label>
+        <input type="password" id="password" />
+        <div id="errorPassword" class="error"></div>
+
+        <label>Email:</label>
+        <input type="text" id="email" />
+        <div id="errorEmail" class="error"></div>
+
+        <label>Phone Number:</label>
+        <input type="text" id="number" />
+        <div id="errorPhone" class="error"></div>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Female" /> Female
+        <input type="radio" name="gender" value="Male" /> Male
+        <div id="errorGender" class="error"></div>
+
+        <label>Select a Hobby:</label>
+        <input type="checkbox" name="hobbie" value="Reading" /> Reading
+        <input type="checkbox" name="hobbie" value="Writing" /> Writing
+        <input type="checkbox" name="hobbie" value="Singing" /> Singing
+        <input type="checkbox" name="hobbie" value="Dancing" /> Dancing
+        <div id="errorHobby" class="error"></div>
+
+        <label>Date:</label>
+        <input type="date" id="date" />
+        <div id="errorDate" class="error"></div>
+
+        <label>Time:</label>
+        <input type="time" id="time" />
+        <div id="errorTime" class="error"></div>
+
+        <label>Choose a color betwen blue and red: </label>
+        <input type="color" id="color" />
+        <div id="errorColor" class="error"></div>
+
+        <button type="button" onclick="validateForm()">Submit</button>
+      </form>
+
+      <h2>Submitted Details:</h2>
+      <div id="output"></div>
+    </div>
+
+    <script>
+      function validateForm() {
+        let isValid = true;
+
+        let name = document.getElementById("name").value.trim();
+        let regno = document.getElementById("regno").value.trim();
+        let password = document.getElementById("password").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let phone = document.getElementById("number").value.trim();
+        let gender = document.querySelector('input[name="gender"]:checked');
+        let hobbies = document.querySelectorAll('input[name="hobbie"]:checked');
+        let date = document.getElementById("date").value.trim();
+        let time = document.getElementById("time").value.trim();
+        let color = document.getElementById("color").value;
+
+        document.querySelectorAll(".error").forEach((el) => (el.innerHTML = ""));
+
+        if (!/^[A-Z][a-z]+$/.test(name)) {
+          document.getElementById("errorName").innerHTML =
+            "First letter must be uppercase, followed by lowercase.";
+          isValid = false;
+        }
+
+        if (!/^2212\d{3}$/.test(regno) || parseInt(regno.substring(4)) > 136) {
+          document.getElementById("errorRegNo").innerHTML =
+            "Register No. must start with 2212 followed by numbers (001-136).";
+          isValid = false;
+        }
+
+        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
+          document.getElementById("errorPassword").innerHTML =
+            "Password must be 8+ chars, 1 uppercase, 1 lowercase, 1 number, 1 special character.";
+          isValid = false;
+        }
+
+        if (!/^[a-z0-9]+@gmail\.com$/.test(email)) {
+          document.getElementById("errorEmail").innerHTML =
+            "Email must be lowercase and end with @gmail.com.";
+          isValid = false;
+        }
+
+        if (!/^\+91-[6789]\d{9}$/.test(phone)) {
+          document.getElementById("errorPhone").innerHTML =
+            "Format: +91-XXXXXXXXXX (Starts with 6,7,8,9).";
+          isValid = false;
+        }
+
+        if (!gender) {
+          document.getElementById("errorGender").innerHTML =
+            "Please select a gender.";
+          isValid = false;
+        }
+
+        if (hobbies.length === 0) {
+          document.getElementById("errorHobby").innerHTML =
+            "Select at least one hobby.";
+          isValid = false;
+        }
+
+        if (date === "") {
+          document.getElementById("errorDate").innerHTML =
+            "Please select a date.";
+          isValid = false;
+        }
+
+        if (time === "") {
+          document.getElementById("errorTime").innerHTML =
+            "Please select a time.";
+          isValid = false;
+        }
+
+        let isBlueOrGreen =
+          /^#([0-9A-Fa-f]{2}){3}$/.test(color) &&
+          (color.startsWith("#00") || color.endsWith("ff"));
+
+        if (!isBlueOrGreen) {
+          document.getElementById("errorColor").innerHTML =
+            "Choose a color between blue and green.";
+          isValid = false;
+        }
+
+        if (isValid) {
+          let output = `
+						<p><strong>Name:</strong> ${name}</p>
+						<p><strong>Register No.:</strong> ${regno}</p>
+						<p><strong>Email:</strong> ${email}</p>
+						<p><strong>Phone Number:</strong> ${phone}</p>
+						<p><strong>Gender:</strong> ${gender.value}</p>
+						<p><strong>Hobbies:</strong> ${Array.from(hobbies)
+							.map((h) => h.value)
+							.join(", ")}</p>
+						<p><strong>Date:</strong> ${date}</p>
+						<p><strong>Time:</strong> ${time}</p>
+						<p><strong>Color:</strong> ${color}</p>`;
+          document.getElementById("output").innerHTML = output;
+        }
+      }
+    </script>
+  </body>
+</html>
